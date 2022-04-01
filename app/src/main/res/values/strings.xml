@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">WeParty</string>
+
+
+    <!-- Page Menu principal-->
+    <string name="titre_menu_principal">Menu principal</string>
+
+    <!-- Page se connecter-->
+    <string name="connexion_titre">Connexion</string>
+    <string name="nom_utilisateur">Nom d\'utilisateur</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="bouton_se_connecter">Se connecter</string>
+    <string name="lien_mot_oublie">Mot de passe oublié</string>
+    <string name="bouton_creer_compte">Créer un compte</string>
+
+    <!-- Page changer de mot de passe 1-->
+    <string name="changer_mot_de_passe_titre">Changer de mot de passe</string>
+    <string name="email">Email</string>
+    <string name="bouton_envoyer_mot_de_passe">Envoyer</string>
+
+
+    <!-- Page changer de mot de passe 2-->
+    <string name="nouveau_mot_de_passe">Nouveau mot de passe</string>
+    <string name="confirmer_mot_de_passe">Confirmer le mot de passe</string>
+    <string name="bouton_changer_mot_de_passe">Changer mot de passe</string>
+
+    <!-- Page créer un compte-->
+    <string name="creer_un_compte_titre">Créer un compte</string>
+    <string name="confirmer_mot">Confirmer mot de passe</string>
+    <string name="bouton_enregistrer">S\'enregistrer</string>
+
+    <!-- Page proposition d'événements-->
+    <string name="proposition_evenement_titre">Proposition d\'évênement</string>
+    <string name="titre_evenement">Titre</string>
+    <string name="description">Description</string>
+    <string name="piece_jointes">Pièces jointes</string>
+    <string name="bouton_envoyer_evenement">Envoyer</string>
+
+    <!-- Page favoris-->
+    <string name="favoris_titre">Favoris</string>
+
+    <!-- Page gérer mes évênements utilisateur-->
+    <string name="gerer_evenement_titre">Gérer mes événements</string>
+
+    <!-- Page gérer mes évênements organisateur-->
+
+    <string name="date_gerer">Date</string>
+    <string name="lieu_gerer">Lieu</string>
+    <string name="heure_gerer">Heure</string>
+
+    <!-- Page paiement-->
+
+    <string name="paiement_titre">Paiement</string>
+    <string name="numero_carte">Numéro de carte</string>
+    <string name="date_validite">Date de validité</string>
+    <string name="cryptogramme">Cryptogramme</string>
+    <string name="payer">Payer</string>
+
+    <!-- Affichage évênement-->
+
+    <string name="page_evenement">Page de l'évênement</string>
+    <string name="lieu">Lieu</string>
+    <string name="heure">Heure</string>
+    <string name="type_evenement">Type d'évênement</string>
+
+
+
+
+</resources>
