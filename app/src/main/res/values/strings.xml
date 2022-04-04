@@ -58,10 +58,10 @@
 
     <!-- Affichage évênement-->
 
-    <string name="page_evenement">Page de l'évênement</string>
+    <string name="page_evenement">Page de l\'évênement</string>
     <string name="lieu">Lieu</string>
     <string name="heure">Heure</string>
-    <string name="type_evenement">Type d'évênement</string>
+    <string name="type_evenement">Type d\'évênement</string>
 
 
 
