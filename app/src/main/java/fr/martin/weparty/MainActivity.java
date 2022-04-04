@@ -31,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.home_nav:
                             selectedFragment = new HomeFragment();
                             break;
+                        case R.id.map_nav:
+                            selectedFragment = new MapFragment();
+                            break;
+                        case R.id.add_nav:
+                            selectedFragment = new AddeventFragment();
+                            break;
+                        case R.id.settings_nav:
+                            selectedFragment = new SettingsFragment();
+                            break;
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();

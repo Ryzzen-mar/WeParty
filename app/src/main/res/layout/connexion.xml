@@ -48,6 +48,7 @@
         />
 
     <Button
+        android:id="@+id/fjghifgb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/bouton_creer_compte"
