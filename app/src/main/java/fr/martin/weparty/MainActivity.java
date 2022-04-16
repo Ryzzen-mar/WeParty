@@ -4,12 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
+
+    String prevActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +25,25 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView barreNav = findViewById(R.id.bottomNavigationView2);
         barreNav.setOnNavigationItemSelectedListener(navListener);
+
+        Intent intent = getIntent();
+
+        System.out.println(intent);
+
+        String prevActivity = intent.getStringExtra("activity");
+
+
+        System.out.println(prevActivity);
+
+
+        if(! Objects.equals(prevActivity, "first")){
+
+            System.out.println("dans la boucle!");
+            Intent connexionActivity = new Intent (getApplicationContext(), connexion.class);
+            startActivity(connexionActivity);
+            finish();
+        }
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -46,5 +72,5 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
+
 }
-martin

@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WeParty">
         <activity
+            android:name=".changePass"
+            android:exported="false" />
+        <activity
+            android:name=".creerCompte"
+            android:exported="false" />
+        <activity
+            android:name=".connexion"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
