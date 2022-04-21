@@ -35,7 +35,7 @@ public class creerCompte extends AppCompatActivity {
 
                 //Si nom utilisateur correspond à celui dans BDD et si mot de passe correspond {
                     Intent connexion = new Intent (getApplicationContext(), connexion.class);
-                    //connexion.putExtra("activity","first");
+                    connexion.putExtra("activity","first");
                     startActivity(connexion);
                     finish();
                 //}

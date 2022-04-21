@@ -39,10 +39,9 @@ public class AddeventFragment extends Fragment {
                 String descEvenementStr=descEvenement.getText().toString();
 
                 //Si nom utilisateur correspond à celui dans BDD et si mot de passe correspond {
-//                Intent menuActivity = new Intent (getApplicationContext(), MainActivity.class);
-//                menuActivity.putExtra("activity","first");
-//                startActivity(menuActivity);
-//                finish();
+                Intent menuActivity = new Intent (getActivity(), MainActivity.class);
+                menuActivity.putExtra("activity","first");
+                startActivity(menuActivity);
                 //}
             }
         });
