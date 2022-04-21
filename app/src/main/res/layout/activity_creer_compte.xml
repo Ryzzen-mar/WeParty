@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/nom_utilisateur"
+        android:id="@+id/nom_utilisateur_creer"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -38,10 +38,10 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nom_utilisateur" />
+        app:layout_constraintTop_toBottomOf="@+id/nom_utilisateur_creer" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/confirmer_mot_passe"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -52,6 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mot_de_passe_compte" />
 
     <Button
+        android:id="@+id/creer_botton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -59,6 +60,6 @@
         android:text="@string/bouton_enregistrer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmer_mot_passe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
