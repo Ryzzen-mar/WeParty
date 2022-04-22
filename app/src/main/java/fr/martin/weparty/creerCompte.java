@@ -39,6 +39,7 @@ public class creerCompte extends AppCompatActivity {
 
         creerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                createUser();
                 Intent connexionActivity = new Intent (getApplicationContext(), connexion.class);
                 startActivity(connexionActivity);
                 finish();
