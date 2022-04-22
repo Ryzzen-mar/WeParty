@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "503169509431",
+    "project_id": "weparty-290bb",
+    "storage_bucket": "weparty-290bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503169509431:android:46e8101e72e4fa3fdd37b2",
+        "android_client_info": {
+          "package_name": "fr.martin.weparty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503169509431-e9avcd1ij20kjjh721b68vrmu76rcr9g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.martin.weparty",
+            "certificate_hash": "562c141d2e1bfd2555d9cbbcdc51a4927d4ca7ca"
+          }
+        },
+        {
+          "client_id": "503169509431-dlg4mmr0utet1nvs5hauc93ediv14fu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxwKiErPz7GWc7IdwdRl0uWsDWWGaKvWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503169509431-dlg4mmr0utet1nvs5hauc93ediv14fu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
