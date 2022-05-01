@@ -41,9 +41,19 @@ public class connexion extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         lien.setMovementMethod(LinkMovementMethod.getInstance());
 
-        connexionBouton.setOnClickListener(view -> {
-            loginUser();
+        //connexionBouton.setOnClickListener(view -> {
+
+        //    loginUser();
+        //});
+
+        connexionBouton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                loginUser();
+
+            }
         });
+
+
 
         creerBouton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -80,7 +90,11 @@ public class connexion extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(connexion.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(connexion.this, MainActivity.class));
+                            //startActivity(new Intent(connexion.this, MainActivity.class));
+                            Intent mainAct = new Intent (getApplicationContext(), MainActivity.class);
+                            mainAct.putExtra("activity","first");
+                            startActivity(mainAct);
+                            finish();
                         }else{
                             Toast.makeText(connexion.this, "Log in Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

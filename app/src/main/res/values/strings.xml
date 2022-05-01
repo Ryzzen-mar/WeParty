@@ -35,6 +35,8 @@
     <string name="description">Description</string>
     <string name="piece_jointes">Pièces jointes</string>
     <string name="bouton_envoyer_evenement">Envoyer</string>
+    <string name="date">Date</string>
+
 
     <!-- Page favoris-->
     <string name="favoris_titre">Favoris</string>

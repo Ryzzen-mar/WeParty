@@ -25,17 +25,22 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         BottomNavigationView barreNav = findViewById(R.id.bottomNavigationView2);
         barreNav.setOnNavigationItemSelectedListener(navListener);
+
+        //permet de connaître la dernière page----
         Intent intent = getIntent();
         System.out.println(intent);
         String prevActivity = intent.getStringExtra("activity");
-        System.out.println(prevActivity);
+        //-----
+
+        //Fait en sorte que la page de connexion ne soit pas affichée à chaque fois que Main Activity est appelée-------
+        //affichage qu'au lancement
         if(! Objects.equals(prevActivity, "first")){
 
-            System.out.println("dans la boucle!");
             Intent connexionActivity = new Intent (getApplicationContext(), connexion.class);
             startActivity(connexionActivity);
             finish();
         }
+        //---------
 
     }
 
