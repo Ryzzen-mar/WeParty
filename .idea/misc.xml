@@ -8,9 +8,12 @@
         <entry key="..\:/Users/chanf/WeParty/app/src/main/res/layout/activity_creer_compte.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1855" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/drawable/add.xml" value="0.1855" />
+        <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/drawable/home.xml" value="0.158" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1855" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1855" />
+        <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/drawable/map.xml" value="0.158" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/drawable/setting.xml" value="0.1855" />
+        <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/drawable/star.xml" value="0.158" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/acceuil.xml" value="0.22780797101449277" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/activity_creer_compte.xml" value="0.129981884057971" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/activity_main.xml" value="0.2259963768115942" />
@@ -20,8 +23,10 @@
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/connexion.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/creation_compte.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/creation_evenement.xml" value="0.2259963768115942" />
+        <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/favourite.xml" value="0.2125" />
+        <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/map.xml" value="0.12228260869565218" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/paiement.xml" value="0.2259963768115942" />
-        <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/menu/menu_navigation.xml" value="0.264" />
+        <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/menu/menu_navigation.xml" value="0.1" />
       </map>
     </option>
   </component>
