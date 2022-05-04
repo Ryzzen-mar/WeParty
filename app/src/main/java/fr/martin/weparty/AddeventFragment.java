@@ -84,12 +84,11 @@ public class AddeventFragment extends Fragment {
                     }
                 });
 
-
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mGetContent.launch("image/*");
-                uploadPicture();
+                Intent secondPassActivity = new Intent (getActivity(), SecondActivity.class);
+                startActivity(secondPassActivity);
             }
         });
 
