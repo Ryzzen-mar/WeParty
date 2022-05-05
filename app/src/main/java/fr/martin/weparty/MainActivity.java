@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         mAuth = FirebaseAuth.getInstance();
         BottomNavigationView barreNav = findViewById(R.id.bottomNavigationView2);
         barreNav.setOnNavigationItemSelectedListener(navListener);
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
+
                     switch(item.getItemId()) {
 
                         case R.id.home_nav:
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
                     return true;
+
                 }
             };
     @Override

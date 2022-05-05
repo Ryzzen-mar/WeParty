@@ -17,6 +17,7 @@
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/acceuil.xml" value="0.22780797101449277" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/activity_creer_compte.xml" value="0.129981884057971" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/activity_main.xml" value="0.2259963768115942" />
+        <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/affichage_detaille.xml" value="0.2125" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/affichage_evenement.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/changer_mot_de_passe_1.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/changer_mot_de_passe_2.xml" value="0.2259963768115942" />
@@ -24,8 +25,10 @@
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/creation_compte.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/creation_evenement.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/favourite.xml" value="0.2125" />
+        <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/fragment_map.xml" value="0.1890625" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/map.xml" value="0.12228260869565218" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/paiement.xml" value="0.2259963768115942" />
+        <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/layout/settings.xml" value="0.12228260869565218" />
         <entry key="..\:/Users/marti/Desktop/semestre_2/innovation/WeParty/app/src/main/res/menu/menu_navigation.xml" value="0.1" />
       </map>
     </option>
