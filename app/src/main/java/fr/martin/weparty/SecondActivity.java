@@ -14,9 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +26,9 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+
+import java.util.UUID;
 
 public class SecondActivity<mGetContent> extends AppCompatActivity {
 
@@ -58,13 +58,13 @@ public class SecondActivity<mGetContent> extends AppCompatActivity {
         mImageView = (ImageView) findViewById(R.id.image_view);
         mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
-        mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
+        mStorageRef = FirebaseStorage.getInstance().getReference();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mGetContent.launch("images/*");
+                openFileChooser();
             }
         });
 
@@ -88,26 +88,15 @@ public class SecondActivity<mGetContent> extends AppCompatActivity {
     }
 
     // You can do the assignment inside onAttach or onCreate, i.e, before the activity is displayed
-    ActivityResultLauncher<String> mGetContent = registerForActivityResult(
-            new ActivityResultContracts.GetContent(),
-            new ActivityResultCallback<Uri>()
-
-    {
-        @Override
-        public void onActivityResult (Uri result){
-        if (result != null) {
-            // There are no request codes
-            mImageView.setImageURI(result);
-            mImageUri = result;
-        }
-    }
-    });
-
     private void openFileChooser() {
         Intent intent = new Intent();
-        intent.setType("images/*");
+        intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        startActivityForResult(
+                Intent.createChooser(
+                        intent,
+                        "Select Image from here..."),
+                PICK_IMAGE_REQUEST);
     }
 
     @Override
@@ -117,6 +106,8 @@ public class SecondActivity<mGetContent> extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
+
+            Picasso.with(this).load(mImageUri).into(mImageView);
         }
     }
 
@@ -128,8 +119,9 @@ public class SecondActivity<mGetContent> extends AppCompatActivity {
 
     private void uploadFile() {
         if (mImageUri != null) {
-            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
-                    + "." + getFileExtension(mImageUri));
+            StorageReference fileReference = mStorageRef.child(
+                    "images/"
+                            + UUID.randomUUID().toString());;
 
             mUploadTask = fileReference.putFile(mImageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -169,7 +161,7 @@ public class SecondActivity<mGetContent> extends AppCompatActivity {
     }
 
     private void openImagesActivity() {
-        Intent intent = new Intent(this, ImagesActivity.class);
+        Intent intent = new Intent(this, ShowAllImagesFromStorage.class);
         startActivity(intent);
     }
 }
