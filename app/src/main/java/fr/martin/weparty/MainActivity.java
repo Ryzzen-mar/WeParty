@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(connexionActivity);
             finish();
         }
+    }
 
         //---------
 
-    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {

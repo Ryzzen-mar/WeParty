@@ -1,6 +1,5 @@
 package fr.martin.weparty;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,26 +12,24 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
+public class FragmentAdapter extends RecyclerView.Adapter<FragmentAdapter.ViewHolder> {
 
-    private final Context context;
     private ArrayList<String> imageList;
 
-    public ImageAdapter(ArrayList<String> imageList, Context context) {
+    public FragmentAdapter(ArrayList<String> imageList) {
         this.imageList = imageList;
-        this.context = context;
     }
 
 
     @NonNull
     @Override
-    public ImageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FragmentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ImageAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FragmentAdapter.ViewHolder holder, int position) {
         // loading the images from the position
         Glide.with(holder.itemView.getContext()).load(imageList.get(position)).into(holder.imageView);
     }
