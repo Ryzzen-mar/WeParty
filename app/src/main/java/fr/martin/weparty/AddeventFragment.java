@@ -1,31 +1,38 @@
 package fr.martin.weparty;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.security.GeneralSecurityException;
 import java.util.UUID;
@@ -35,19 +42,25 @@ import fr.martin.weparty.databinding.ActivityMainBinding;
 
 public class AddeventFragment extends Fragment {
 
+
     //créations des variables------
+    private static final int PICK_IMAGE_REQUEST = 1;
     private Button envoyerEvenementButton;
     private EditText titreEvenement;
     private EditText dateEvenement;
     private EditText lieuEvenement;
     private EditText descEvenement;
     private ImageView image;
+    private ProgressBar mProgressBar;
+    private ImageView previewimage;
     private FirebaseStorage storage;
+    private StorageTask mUploadTask;
     private StorageReference storageReference;
-    Uri ImageUri;
+    private Uri mImageUri;
     FirebaseFirestore db;
     ActivityMainBinding binding;
-    ActivityResultLauncher<String> mGetContent;
+    DatabaseReference mDatabaseRef;
+    StorageReference mStorageRef;
 
     //--------
 
@@ -68,27 +81,18 @@ public class AddeventFragment extends Fragment {
         dateEvenement = (EditText) view.findViewById(R.id.date);
         lieuEvenement = (EditText) view.findViewById(R.id.lieu);
         descEvenement = (EditText) view.findViewById(R.id.desc_evenement);
-        image = (ImageView) view.findViewById(R.id.imageView);
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
+        image = (ImageView) view.findViewById(R.id.piece_jointe);
+        previewimage = (ImageView) view.findViewById(R.id.previewImage);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+        mProgressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
         db = FirebaseFirestore.getInstance();
         //--------
 
-        mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
-                new ActivityResultCallback<Uri>() {
-                    @Override
-                    public void onActivityResult(Uri result) {
-                        if (result != null) {
-                            ImageUri = result;
-                        }
-                    }
-                });
-
         image.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent secondPassActivity = new Intent (getActivity(), SecondActivity.class);
-                startActivity(secondPassActivity);
+            public void onClick(View v) {
+                openFileChooser();
             }
         });
 
@@ -100,34 +104,73 @@ public class AddeventFragment extends Fragment {
                 } catch (GeneralSecurityException e) {
                     e.printStackTrace();
                 }
-                Intent menuActivity = new Intent(getActivity(), MainActivity.class);//instanciation de la page visée
-                menuActivity.putExtra("activity", "first");//IMPORTANT, utilité dans MainActivity(lui permet de
-                //connaitre l'activité précédente)
-                startActivity(menuActivity);//départ vers la page visée
-
+                uploadFile();
             }
         });
     }
 
-    private void uploadPicture() {
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        final String randomkey = UUID.randomUUID().toString();
-        StorageReference riversRef = storageReference.child("image/*" + randomkey);
-        riversRef.putFile(ImageUri)
-                .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            mImageUri = data.getData();
 
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        Toast.makeText(getActivity().getApplicationContext(), "Image téléchargée", Toast.LENGTH_LONG).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
+            Picasso.with(getActivity()).load(mImageUri).into(previewimage);
+        }
+    }
 
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity().getApplicationContext(), "Erreur", Toast.LENGTH_LONG).show();
-                    }
-                });
+    private void uploadFile() {
+        if (mImageUri != null) {
+            StorageReference fileReference = mStorageRef.child(
+                    "images/"
+                            + UUID.randomUUID().toString());;
+
+            mUploadTask = fileReference.putFile(mImageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mProgressBar.setProgress(0);
+                                }
+                            }, 500);
+
+                            Upload upload = new Upload(titreEvenement.getText().toString().trim(),lieuEvenement.getText().toString().trim(), dateEvenement.getText().toString().trim(),descEvenement.getText().toString().trim(),
+                                    taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
+                            String uploadId = mDatabaseRef.push().getKey();
+                            mDatabaseRef.child(uploadId).setValue(upload);
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                            mProgressBar.setProgress((int) progress);
+                        }
+                    });
+        } else {
+            Toast.makeText(getActivity(), "No file selected", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void openFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(
+                Intent.createChooser(
+                        intent,
+                        "Select Image from here..."),
+                PICK_IMAGE_REQUEST);
     }
 
     public void addtoDB() throws GeneralSecurityException {
