@@ -1,12 +1,12 @@
 package fr.martin.weparty;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         mAuth = FirebaseAuth.getInstance();
         BottomNavigationView barreNav = findViewById(R.id.bottomNavigationView2);
@@ -42,21 +40,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(connexionActivity);
             finish();
         }
+    }
+
         //---------
 
-        Fragment frag = new HomeFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,frag).commit();
-
-
-
-    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
-
                     switch(item.getItemId()) {
 
                         case R.id.home_nav:
@@ -75,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
                     return true;
-
                 }
             };
     @Override
