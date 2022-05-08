@@ -44,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         }
         //---------
 
+        Fragment frag = new HomeFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,frag).commit();
+
+
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
