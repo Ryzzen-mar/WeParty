@@ -39,7 +39,7 @@
 
         <EditText
 
-            android:id="@+id/date"
+            android:id="@+id/date_evenement"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -52,7 +52,7 @@
 
         <EditText
 
-            android:id="@+id/lieu"
+            android:id="@+id/lieu_evenement"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -60,7 +60,7 @@
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/date" />
+            app:layout_constraintTop_toBottomOf="@+id/date_evenement" />
 
         <EditText
 
@@ -73,7 +73,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lieu" />
+            app:layout_constraintTop_toBottomOf="@+id/lieu_evenement" />
 
         <ImageView
             android:id="@+id/piece_jointe"

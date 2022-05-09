@@ -78,8 +78,8 @@ public class AddeventFragment extends Fragment {
         //instanciation des variables------
         envoyerEvenementButton = (Button) view.findViewById(R.id.envoyer_evenement);
         titreEvenement = (EditText) view.findViewById(R.id.titre_evenement);
-        dateEvenement = (EditText) view.findViewById(R.id.date);
-        lieuEvenement = (EditText) view.findViewById(R.id.lieu);
+        dateEvenement = (EditText) view.findViewById(R.id.date_evenement);
+        lieuEvenement = (EditText) view.findViewById(R.id.lieu_evenement);
         descEvenement = (EditText) view.findViewById(R.id.desc_evenement);
         image = (ImageView) view.findViewById(R.id.piece_jointe);
         previewimage = (ImageView) view.findViewById(R.id.previewImage);
