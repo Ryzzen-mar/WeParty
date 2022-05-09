@@ -40,7 +40,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         holder.textViewName.setText(uploadCurrent.getName());
         holder.textViewDate.setText(uploadCurrent.getDate());
         holder.textViewLocation.setText(uploadCurrent.getLocation());
-        Glide.with(holder.itemView.getContext()).load(mImageList.get(position)).into(holder.imageView);
+        Glide.with(holder.itemView.getContext()).load(mUploads.get(position)).into(holder.imageView);
     }
 
     @Override
